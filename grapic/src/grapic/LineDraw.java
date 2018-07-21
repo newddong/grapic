@@ -32,7 +32,7 @@ class LineDraw extends MouseAdapter{
 //		y2 = e.getY();
 //		line.drawLine(x1, y1, x2, y2);
 //		onscreen.paintComponents(line);
-//		
+//		onscreen.repaint();
 //	}
 	
 	

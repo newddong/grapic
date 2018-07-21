@@ -8,6 +8,7 @@ class DrawPanel extends JPanel{
 		setSize(width,height);
 		setLocation(x, y);
 		setBackground(Color.WHITE);
+		
 	}
 	
 	public void paintComponent(Graphics g) {

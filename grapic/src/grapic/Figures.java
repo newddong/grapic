@@ -1,6 +1,6 @@
 package grapic;
 
-import java.awt.Color;
+import java.awt.*;
 import java.awt.Graphics;
 
 import javax.swing.*;
@@ -8,20 +8,33 @@ import java.awt.event.*;
 
 class Figures extends JPanel{
 	String shape;
+	Container draw;
 	int width;
 	int height;
-	Figures(int x, int y, int width, int height, String shape){
+	
+	Figures(int x, int y, int width, int height, String shape, Container con){
 		setSize(width,height);
 		setLocation(x, y);
 		setBackground(Color.WHITE);
 		this.shape = shape;
 		this.width = width;
 		this.height = height;
-
+		this.draw = con;
+		
+		
 		this.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
 				Figures but = (Figures)e.getSource();
-				Screen.CURRENT_SHAPE = but.shape;
+				Draw l = new Draw(but.shape, draw);
+				
+				MouseListener[] ml = draw.getMouseListeners();
+				if(ml.length>0) {
+					draw.removeMouseListener(ml[0]);
+				}
+				
+				draw.addMouseListener(l);
+				draw.addMouseMotionListener(l);
+				
 			}
 		});
 		
